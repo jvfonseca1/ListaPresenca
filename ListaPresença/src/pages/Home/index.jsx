@@ -23,10 +23,9 @@ export function Home() {
   //Script Reconhecer Botão Enter
   addEventListener('keypress', function(e) {
     if(e.key === "Enter"){
-      const btn = document.getElementById("addStudent");
-      btn.click();
+      document.getElementById("addStudent").click();
     }  
-  })
+  });
 
   return ( 
     <div className='container'>
