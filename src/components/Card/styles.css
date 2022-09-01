@@ -17,3 +17,10 @@
 .card strong{
     font-size: 18px;
 }
+
+@media (max-width:480px) {
+    .card {
+        width: 75%;
+        height: 75px;
+    }
+}

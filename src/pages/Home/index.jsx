@@ -35,7 +35,7 @@ export function Home() {
     <div className='container'>
       <header>
         <h1>Lista de Presença</h1>
-        <div>
+        <div id='perfil'>
           <strong>{users.name}</strong>
           <img src={users.avatar} alt="Foto de Perfil" />
         </div>

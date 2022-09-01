@@ -55,3 +55,37 @@
 .container button:hover {
     filter: brightness(0.9);
 }
+
+@media (max-width: 480px) {
+    .container header {
+        width: 75%;
+    }
+
+    .container input {
+        width: 75%;
+    }
+
+    .container button {
+        width: 75%;
+        margin-bottom: 7%;
+    }
+    
+    #perfil {
+        margin-top: -30%;
+        margin-left: 30%;
+        position: absolute;
+        padding: 10%;
+    }
+
+    #perfil strong {
+        width: 100px;
+        margin-right: -10px;
+    }
+
+    .container header h1 {
+        position: relative;
+        font-size: 30px;
+        margin-left: 5%;
+        margin-bottom: -5%;
+    }
+}
