@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import './styles.css';
 import {Card} from '../../components/Card';
@@ -6,7 +6,7 @@ import {Card} from '../../components/Card';
 export function Home() {
   const [studentName, setStudentName] = useState("");
   const [students, setStudents] = useState([]);
-  var enterPressed = false;
+  const [users, setUsers] = useState({ name: '', avatar: ''})
 
   // Função Adicionar Estudantes 
   function handleAddStudent(){
@@ -21,9 +21,25 @@ export function Home() {
     setStudents(prevState => [...prevState,newStudent]);
   }
 
+  // Uso api Nome e Avatar Github
+  useEffect(() => {
+    fetch('https://api.github.com/users/jvfonseca1').then(response => response.json()).then(data =>{
+      setUsers({
+        avatar: data.avatar_url,
+        name: data.name,
+      })
+    })
+  }, []);
+
   return ( 
     <div className='container'>
-      <h1>Lista de Presença</h1>
+      <header>
+        <h1>Lista de Presença</h1>
+        <div>
+          <strong>{users.name}</strong>
+          <img src={users.avatar} alt="Foto de Perfil" />
+        </div>
+      </header>
       <input 
           type="text" 
           placeholder="Digite o nome"
@@ -37,7 +53,12 @@ export function Home() {
         Adicionar
       </button>
       {
-        students.map(student => <Card name={student.name} time={student.time} />)
+        students.map(student => 
+        <Card 
+          key={student.time}
+          name={student.name} 
+          time={student.time}
+        />)
       }
       
     </div>
