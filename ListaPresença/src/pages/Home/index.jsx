@@ -6,6 +6,7 @@ import {Card} from '../../components/Card';
 export function Home() {
   const [studentName, setStudentName] = useState("");
   const [students, setStudents] = useState([]);
+  var enterPressed = false;
 
   // Função Adicionar Estudantes 
   function handleAddStudent(){
@@ -20,19 +21,13 @@ export function Home() {
     setStudents(prevState => [...prevState,newStudent]);
   }
 
-  //Script Reconhecer Botão Enter
-  addEventListener('keypress', function(e) {
-    if(e.key === "Enter"){
-      document.getElementById("addStudent").click();
-    }  
-  });
-
   return ( 
     <div className='container'>
       <h1>Lista de Presença</h1>
       <input 
           type="text" 
           placeholder="Digite o nome"
+          autoFocus="true"
           onChange={e => setStudentName(e.target.value)
         }
       />
