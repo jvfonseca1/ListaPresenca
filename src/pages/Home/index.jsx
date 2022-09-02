@@ -21,6 +21,21 @@ export function Home() {
     setStudents(prevState => [...prevState,newStudent]);
   }
 
+  // Função Enter Press 
+  useEffect(() => {
+    const listener = event => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        event.preventDefault();
+        var btn = document.getElementById("addStudent");
+        btn.click();
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, []);
+
   // Uso api Nome e Avatar Github
   useEffect(() => {
     fetch('https://api.github.com/users/jvfonseca1').then(response => response.json()).then(data =>{
